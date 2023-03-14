@@ -1,11 +1,14 @@
 import "./style.css";
 import "./lib/colors";
 import { Terminal } from "./lib/terminal";
+import { Shell } from "./lib/shell";
 
 var terminal = new Terminal("#terminal", "#cursor");
 
 terminal.clear();
-terminal.initShell();
+
+var shell = new Shell(terminal);
+shell.prepareNewCommand();
 
 /*
 let code = await (

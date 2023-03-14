@@ -41,22 +41,7 @@ export class Terminal {
     this.codeElm.innerHTML = "";
   }
 
-  initShell() {
-    this.println(
-      "~".blue() +
-        " on " +
-        " master".purple() +
-        " [?] ".red() +
-        "is 📦 " +
-        "v0.1.0".yellow() +
-        " via 🦀 " +
-        "v1.68.0".red()
-    );
-    this.print(" ❯ ".green());
-    this.moveCursor(3, 1);
-  }
-
-  moveCursor(x: number, y: number) {
+  setCursor(x: number, y: number) {
     this.cursorPos = [x, y];
     let top = this.marginSize + y * this.lineHeight;
     let left = this.marginSize + x * characterPixelSize;
@@ -64,5 +49,7 @@ export class Terminal {
     this.cursorElm.style.top = `${top}px`;
     this.cursorElm.style.left = `${left}px`;
     this.cursorElm.style.width = `calc(100vw - ${left}px)`;
+
+    window.console.log("changed", x, y);
   }
 }
