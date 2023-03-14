@@ -4,8 +4,9 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Windows Terminal themes: One Half Dark*/
+  color: #dcdfe4;
+  background-color: #282c34;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -38,11 +39,30 @@ code {
   left: 0;
   top: 0;
 
-  /* Set the height to match that of the viewport. */
-  height: 100vh;
+  margin: 10px;
+  height: calc(100vh - 10px);
+  width: calc(100vw - 10px);
 
-  /* Set the width to match that of the viewport. */
-  width: 100vw;
+  font-family: "Fira Code", monospace;
+}
+
+@supports (font-variation-settings: normal) {
+  code {
+    font-family: "Fira Code VF", monospace;
+  }
+}
+
+pre {
+  /*overflow: auto; */
+  white-space: pre-wrap;
+  tab-size: 2;
+
+  /* Disable weird visual bugs
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  */
 }
 
 a {
@@ -58,11 +78,5 @@ a:hover {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }
