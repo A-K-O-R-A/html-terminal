@@ -59,6 +59,8 @@ input#cursor {
   outline: 0;
   appearance: none;
 
+  /*Same color as terminal*/
+  color: #dcdfe4;
   background-color: transparent;
 }
 
