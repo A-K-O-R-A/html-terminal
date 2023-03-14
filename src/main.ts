@@ -1,8 +1,6 @@
 import "./style.css";
-import "./colors";
-import { Terminal } from "./terminal";
-
-const log = window.console.log;
+import "./lib/colors";
+import { Terminal } from "./lib/terminal";
 
 var terminal = new Terminal("#terminal", "#cursor");
 
@@ -17,9 +15,6 @@ let code = await (
 ).text();
 terminal.print(code.teal());
 */
-
-log(terminal.lineHeight);
-log(terminal.fontSize);
 
 // This forces the focus on the input field
 // so the user can always type
