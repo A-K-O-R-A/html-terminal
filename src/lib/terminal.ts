@@ -60,7 +60,5 @@ export class Terminal {
     this.cursorElm.style.top = `${top}px`;
     this.cursorElm.style.left = `${left}px`;
     this.cursorElm.style.width = `calc(100vw - ${left}px)`;
-
-    window.console.log("changed", x, y);
   }
 }

@@ -1,3 +1,4 @@
+import { allCommands } from "./commands";
 import { Terminal } from "./terminal";
 
 export class Shell {
@@ -19,22 +20,32 @@ export class Shell {
     switch (e.key) {
       case "Enter": {
         this.executeCommand();
+        this.prepareNewCommand();
         return;
       }
     }
   }
 
   executeCommand() {
-    let command = this.terminal.cursorElm.value;
+    let commandString = this.terminal.cursorElm.value;
 
     // Move to next line and print command to console
-    this.println(command);
+    this.println(commandString);
 
     // Clear input
     this.terminal.cursorElm.value = "";
 
-    this.println(command);
-    this.prepareNewCommand();
+    // Look up command
+    let argv = commandString.split(" ");
+    let commandName = argv[0];
+
+    let cmd = allCommands.find((c) => c.command === commandName);
+    if (!cmd) {
+      this.println(`Command ${commandName.red()} not found`);
+      return;
+    }
+
+    cmd.execute(this, argv);
   }
 
   prepareNewCommand() {
@@ -56,18 +67,27 @@ export class Shell {
   //Just for easier access
   print(s: string) {
     this.terminal.print(s);
-
-    // Calculate length without font tags
-    let textLength = s.replace(/<\/*font[^>]*>/g, "").length;
-
     let [x, y] = this.getCursor();
+
+    let lines = s.split("\n");
+    let lastLine = lines[lines.length - 1];
+    // Calculate length without font tags
+    let textLength = lastLine.replace(/<\/*font[^>]*>/g, "").length;
+
+    y += lines.length - 1;
     this.setCursor(x + textLength, y);
   }
 
   println(s?: string) {
     this.terminal.println(s ?? "");
+
     let [_x, y] = this.getCursor();
-    this.setCursor(0, y + 1);
+
+    let lines = (s ?? "").split("\n");
+
+    y += lines.length;
+
+    this.setCursor(0, y);
   }
 
   getCursor(): [number, number] {
