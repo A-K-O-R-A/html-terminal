@@ -24,6 +24,17 @@ export class Terminal {
     this.marginSize = parseFloat(style.margin);
 
     this.cursorPos = [0, 0];
+
+    // Hook to autofocus input
+    window.onclick = (e) => {
+      // Check if mouse is below input element
+      if (
+        e.clientX > this.cursorElm.offsetLeft &&
+        e.clientY > this.cursorElm.offsetTop
+      ) {
+        this.cursorElm.focus();
+      }
+    };
   }
 
   private computedStyle() {
