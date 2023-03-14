@@ -4,14 +4,24 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- https://github.com/tonsky/FiraCode#readme -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AKORA</title>
 </head>
 
+<html>
+
 <body>
     <script type="module" src="/src/main.ts"></script>
-    <pre><code id="terminal"></code></pre>
+    <pre><code id="terminal" onfocus="this.blur();"></code><input id="cursor" autofocus></input></pre>
+
 </body>
+
+<style>
+    html {
+        background-color: #2d2d2d;
+    }
+</style>
 
 </html>

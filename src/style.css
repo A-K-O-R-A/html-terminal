@@ -34,7 +34,7 @@ pre {
   overflow: hidden;
 }
 
-code {
+code#terminal {
   position: absolute;
   left: 0;
   top: 0;
@@ -42,12 +42,35 @@ code {
   margin: 10px;
   height: calc(100vh - 10px);
   width: calc(100vw - 10px);
+}
 
+input#cursor {
+  position: absolute;
+  left: calc(10px + 24px);
+  top: calc(10px + 24px);
+
+  font-size: 16px;
+
+  /*One line hight */
+  height: 24px;
+  width: 100vh;
+
+  border: 0;
+  outline: 0;
+  appearance: none;
+
+  background-color: transparent;
+}
+
+pre > * {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
   font-family: "Fira Code", monospace;
 }
 
 @supports (font-variation-settings: normal) {
-  code {
+  pre > * {
     font-family: "Fira Code VF", monospace;
   }
 }
