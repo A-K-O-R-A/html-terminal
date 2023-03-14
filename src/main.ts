@@ -7,7 +7,7 @@ const log = window.console.log;
 var terminal = new Terminal("#terminal", "#cursor");
 
 terminal.clear();
-terminal.shell();
+terminal.initShell();
 
 /*
 let code = await (
@@ -18,8 +18,8 @@ let code = await (
 terminal.print(code.teal());
 */
 
-log(terminal.computedStyle().lineHeight);
-log(terminal.computedStyle().fontSize);
+log(terminal.lineHeight);
+log(terminal.fontSize);
 
 // This forces the focus on the input field
 // so the user can always type

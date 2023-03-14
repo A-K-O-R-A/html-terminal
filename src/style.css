@@ -46,15 +46,15 @@ code#terminal {
 
 input#cursor {
   position: absolute;
-  left: calc(10px + 24px);
+  left: calc(10px + (3 * 9px));
   top: calc(10px + 24px);
-
-  font-size: 16px;
 
   /*One line hight */
   height: 24px;
   width: 100vh;
 
+  margin: 0;
+  padding: 0;
   border: 0;
   outline: 0;
   appearance: none;
