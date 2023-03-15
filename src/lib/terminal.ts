@@ -45,7 +45,7 @@ export class Terminal {
     this.codeElm.innerHTML += txt;
   }
   println(txt: string) {
-    this.codeElm.innerHTML += txt + "\n";
+    this.print(txt + "\n");
   }
 
   clear() {
@@ -60,5 +60,13 @@ export class Terminal {
     this.cursorElm.style.top = `${top}px`;
     this.cursorElm.style.left = `${left}px`;
     this.cursorElm.style.width = `calc(100vw - ${left}px)`;
+  }
+
+  // Returns [columnCount, rowCount]
+  getDimensions(): [number, number] {
+    let cols = (window.innerWidth - 2 * this.marginSize) / characterPixelSize;
+    let rows = (window.innerHeight - 2 * this.marginSize) / this.lineHeight;
+
+    return [cols, rows];
   }
 }

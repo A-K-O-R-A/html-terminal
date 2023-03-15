@@ -7,7 +7,7 @@ const loadTime = new Date();
 
 const meFetchCommand: Command = {
   command: "neofetch",
-  description: "Shows information about me",
+  description: "Shows information about this environment",
   usage: "neofetch",
   execute(shell, _argv) {
     let width = window.innerWidth;

@@ -31,7 +31,7 @@ const tealReg = /teal\(([^()]+)\)/gm;
 const whiteReg = /white\(([^()]+)\)/gm;
 
 const boldReg = /bold\(([^()]+)\)/gm;
-const italicReg = /italic\(([^()]+)\)/gm;
+const lightReg = /light\(([^()]+)\)/gm;
 String.prototype.format = function (this: string) {
   return this.replace(redReg, `<font color="${colorMap.red}">$1</font>`)
     .replace(greenReg, `<font color="${colorMap.green}">$1</font>`)
@@ -41,7 +41,7 @@ String.prototype.format = function (this: string) {
     .replace(tealReg, `<font color="${colorMap.teal}">$1</font>`)
     .replace(whiteReg, `<font color="${colorMap.white}">$1</font>`)
     .replace(boldReg, `<b>$1</b>`)
-    .replace(italicReg, `<i>$1</i>`);
+    .replace(lightReg, `<i style="font-weight: lighter;">$1</i>`);
 };
 
 String.prototype.red = function (this: string) {

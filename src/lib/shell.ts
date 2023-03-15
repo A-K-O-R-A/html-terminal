@@ -12,7 +12,6 @@ export class Shell {
     window.onkeydown = (e) => {
       let shouldFocus = !e.ctrlKey;
 
-      window.console.log(e.ctrlKey && e.key === "v");
       shouldFocus ||= e.ctrlKey && e.key === "v";
 
       if (!shouldFocus) return;
