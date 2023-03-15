@@ -8,7 +8,6 @@ export class Shell {
   constructor(terminal: Terminal) {
     this.terminal = terminal;
     this.path = ["~"];
-
     //Bind events
     terminal.cursorElm.onkeydown = (e) => this.onKey(e);
     window.onkeydown = (e) => {
@@ -18,6 +17,7 @@ export class Shell {
 
       if (!shouldFocus) return;
 
+      this.terminal.scrollToCursor();
       terminal.cursorElm.focus();
     };
 
