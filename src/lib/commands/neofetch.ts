@@ -40,7 +40,7 @@ teal(\`'ccllllllllll  lllllllllllllllllll)
 teal(        \`' \*::  :ccllllllllllllllll)
 teal(                       \`\`\`\`''*::cll)   
 teal(                                 \`\`)
-    `.applyColors()
+    `.format()
     );
   },
 };

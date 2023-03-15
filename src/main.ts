@@ -1,5 +1,5 @@
 import "./style.css";
-import "./lib/colors";
+import "./lib/format";
 import { Terminal } from "./lib/terminal";
 import { Shell } from "./lib/shell";
 

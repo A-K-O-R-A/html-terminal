@@ -7,7 +7,8 @@ declare interface String {
   teal(): string;
   white(): string;
 
-  applyColors(): string;
+  /* Format for use in terminal */
+  format(): string;
 }
 
 // For Theme One Half Dark
@@ -21,22 +22,26 @@ const colorMap = {
   white: "#dcdfe4",
 };
 
-String.prototype.applyColors = function (this: string) {
-  let redReg = /red\(([^()]+)\)/gm;
-  let greenReg = /green\(([^()]+)\)/gm;
-  let yellowReg = /yellow\(([^()]+)\)/gm;
-  let blueReg = /blue\(([^()]+)\)/gm;
-  let purpleReg = /purple\(([^()]+)\)/gm;
-  let tealReg = /teal\(([^()]+)\)/gm;
-  let whiteReg = /white\(([^()]+)\)/gm;
+const redReg = /red\(([^()]+)\)/gm;
+const greenReg = /green\(([^()]+)\)/gm;
+const yellowReg = /yellow\(([^()]+)\)/gm;
+const blueReg = /blue\(([^()]+)\)/gm;
+const purpleReg = /purple\(([^()]+)\)/gm;
+const tealReg = /teal\(([^()]+)\)/gm;
+const whiteReg = /white\(([^()]+)\)/gm;
 
+const boldReg = /bold\(([^()]+)\)/gm;
+const italicReg = /italic\(([^()]+)\)/gm;
+String.prototype.format = function (this: string) {
   return this.replace(redReg, `<font color="${colorMap.red}">$1</font>`)
     .replace(greenReg, `<font color="${colorMap.green}">$1</font>`)
     .replace(yellowReg, `<font color="${colorMap.yellow}">$1</font>`)
     .replace(blueReg, `<font color="${colorMap.blue}">$1</font>`)
     .replace(purpleReg, `<font color="${colorMap.purple}">$1</font>`)
     .replace(tealReg, `<font color="${colorMap.teal}">$1</font>`)
-    .replace(whiteReg, `<font color="${colorMap.white}">$1</font>`);
+    .replace(whiteReg, `<font color="${colorMap.white}">$1</font>`)
+    .replace(boldReg, `<b>$1</b>`)
+    .replace(italicReg, `<i>$1</i>`);
 };
 
 String.prototype.red = function (this: string) {

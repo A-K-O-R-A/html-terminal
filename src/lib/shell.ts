@@ -9,6 +9,17 @@ export class Shell {
 
     //Bind events
     terminal.cursorElm.onkeydown = (e) => this.onKey(e);
+    window.onkeydown = (e) => {
+      let shouldFocus = !e.ctrlKey;
+
+      window.console.log(e.ctrlKey && e.key === "v");
+      shouldFocus ||= e.ctrlKey && e.key === "v";
+
+      if (!shouldFocus) return;
+
+      terminal.cursorElm.focus();
+      terminal.cursorElm.onkeydown!(e);
+    };
 
     // Focus so the user can start typing
     terminal.cursorElm.focus();
