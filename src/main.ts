@@ -10,6 +10,10 @@ terminal.clear();
 var shell = new Shell(terminal);
 shell.prepareNewCommand();
 
+terminal.cursorElm.value = "neofetch";
+shell.executeCommand();
+shell.prepareNewCommand();
+
 /*
 let code = await (
   await fetch(

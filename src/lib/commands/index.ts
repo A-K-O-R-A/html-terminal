@@ -1,5 +1,5 @@
 import { Shell } from "../shell";
-import meFetchCommand from "./mefetch";
+import meFetchCommand from "./neofetch";
 
 export interface Command {
   command: string;

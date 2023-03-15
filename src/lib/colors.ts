@@ -6,6 +6,8 @@ declare interface String {
   purple(): string;
   teal(): string;
   white(): string;
+
+  applyColors(): string;
 }
 
 // For Theme One Half Dark
@@ -17,6 +19,24 @@ const colorMap = {
   purple: "#c678dd", //Lavendar
   teal: "#56b6c2", // Aqua
   white: "#dcdfe4",
+};
+
+String.prototype.applyColors = function (this: string) {
+  let redReg = /red\(([^()]+)\)/gm;
+  let greenReg = /green\(([^()]+)\)/gm;
+  let yellowReg = /yellow\(([^()]+)\)/gm;
+  let blueReg = /blue\(([^()]+)\)/gm;
+  let purpleReg = /purple\(([^()]+)\)/gm;
+  let tealReg = /teal\(([^()]+)\)/gm;
+  let whiteReg = /white\(([^()]+)\)/gm;
+
+  return this.replace(redReg, `<font color="${colorMap.red}">$1</font>`)
+    .replace(greenReg, `<font color="${colorMap.green}">$1</font>`)
+    .replace(yellowReg, `<font color="${colorMap.yellow}">$1</font>`)
+    .replace(blueReg, `<font color="${colorMap.blue}">$1</font>`)
+    .replace(purpleReg, `<font color="${colorMap.purple}">$1</font>`)
+    .replace(tealReg, `<font color="${colorMap.teal}">$1</font>`)
+    .replace(whiteReg, `<font color="${colorMap.white}">$1</font>`);
 };
 
 String.prototype.red = function (this: string) {

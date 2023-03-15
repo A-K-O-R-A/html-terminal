@@ -60,8 +60,6 @@ export class Shell {
         "v1.68.0".red()
     );
     this.print(" ❯ ".green());
-
-    // Move cursor down appropriately
   }
 
   //Just for easier access
