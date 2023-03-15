@@ -17,7 +17,6 @@ export class Shell {
       if (!shouldFocus) return;
 
       terminal.cursorElm.focus();
-      terminal.cursorElm.onkeydown!(e);
     };
 
     // Focus so the user can start typing
