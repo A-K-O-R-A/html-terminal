@@ -3,16 +3,28 @@ import "./lib/format";
 import { Terminal } from "./lib/terminal";
 import { Shell } from "./lib/shell";
 
+let lineBuffer = JSON.parse(localStorage.getItem("lineBuffer")!);
+let scrollOffset = JSON.parse(localStorage.getItem("scrollOffset")!);
+let cursorPos = JSON.parse(localStorage.getItem("cursorPos")!);
+
+let firstSession = !localStorage.getItem("lineBuffer");
+
 var terminal = new Terminal("#terminal", "#cursor");
-
-// terminal.loadLocalStorage();
-
 var shell = new Shell(terminal);
-shell.prepareNewCommand();
-//terminal.cursorElm.value = "neofetch";
-//shell.executeCommand();
-//shell.prepareNewCommand();
 
+if (firstSession) {
+  shell.prepareNewCommand();
+
+  terminal.cursorElm.value = "neofetch";
+  shell.executeCommand();
+  shell.prepareNewCommand();
+} else {
+  terminal.lineBuffer = lineBuffer!;
+  terminal.scrollOffset = scrollOffset!;
+  terminal.cursorPos = cursorPos!;
+
+  terminal.setCursor(...terminal.cursorPos);
+}
 /*
 let code = await (
   await fetch(
@@ -20,14 +32,4 @@ let code = await (
   )
 ).text();
 terminal.print(code.teal());
-*/
-
-// This forces the focus on the input field
-// so the user can always type
-/*
-terminal.cursorElm.onblur = (_) => {
-  setTimeout(() => {
-    terminal.cursorElm.focus();
-  }, 0);
-};
 */

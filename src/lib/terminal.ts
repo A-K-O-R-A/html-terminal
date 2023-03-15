@@ -91,12 +91,6 @@ export class Terminal {
     localStorage.setItem("cursorPos", JSON.stringify(this.cursorPos));
   }
 
-  loadLocalStorage() {
-    this.lineBuffer = JSON.parse(localStorage.getItem("lineBuffer") ?? "[]");
-    this.scrollOffset = JSON.parse(localStorage.getItem("scrollOffset") ?? "0");
-    this.cursorPos = JSON.parse(localStorage.getItem("cursorPos") ?? "[0, 0]");
-  }
-
   private updateCodeElement() {
     let bufferLen = this.lineBuffer.length;
     let [_, rowCount] = this.getDimensions();
@@ -182,9 +176,9 @@ export class Terminal {
     if (atBottom) {
       this.scrollOffset = this.lineBuffer.length - rowCount;
       this.update();
-    }
 
-    this.setLocalStorage();
+      this.setLocalStorage();
+    }
   }
 
   // Returns [columnCount, rowCount]
