@@ -3,9 +3,11 @@ import { Terminal } from "./terminal";
 
 export class Shell {
   terminal: Terminal;
+  path: string[];
 
   constructor(terminal: Terminal) {
     this.terminal = terminal;
+    this.path = ["~"];
 
     //Bind events
     terminal.cursorElm.onkeydown = (e) => this.onKey(e);
@@ -59,7 +61,7 @@ export class Shell {
 
   prepareNewCommand() {
     this.println(
-      "~".blue() +
+      this.path.join("/").blue() +
         " on " +
         " master".purple() +
         " [?] ".red() +

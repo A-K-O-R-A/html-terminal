@@ -1,4 +1,5 @@
 import { Shell } from "../shell";
+import cdCommand from "./cd";
 import clsCommand from "./clear";
 import helpCommand from "./help";
 import meFetchCommand from "./neofetch";
@@ -10,4 +11,9 @@ export interface Command {
   execute(shell: Shell, argv: string[]): void;
 }
 
-export const allCommands: Command[] = [clsCommand, meFetchCommand, helpCommand];
+export const allCommands: Command[] = [
+  cdCommand,
+  clsCommand,
+  meFetchCommand,
+  helpCommand,
+];
